@@ -3,3 +3,5 @@
 ## Team Hackathon group project
 
 ## fa18-202-team-flash
+
+## Know Your Patterns
