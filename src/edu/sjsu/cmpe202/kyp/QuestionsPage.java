@@ -103,7 +103,52 @@ public class QuestionsPage extends JFrame {
 		imageLabel = new JLabel(new ImageIcon(image));
 		panel.add(imageLabel);
 		contentPane.add(panel);
-		
+		//
+		// JLabel label = new JLabel();
+		// label.setIcon(new ImageIcon("myImage.PNG"));;
+		// panel.add(label);
+
+		// lblQuestions = new JLabel(this.question);
+		// lblQuestions.setFont(new Font("Calibri", Font.BOLD, 17));
+		// lblQuestions.setBounds(96, 362, 496, 73);
+		// contentPane.add(lblQuestions);
+
+		Button button = new Button("Hints");
+		Image image1 = ImageIO.read(new File("src/resources/1.png")).getScaledInstance(panel.getWidth(),
+				panel.getHeight(), Image.SCALE_SMOOTH);
+		image2 = ImageIO.read(new File("src/resources/2.png")).getScaledInstance(panel.getWidth(),
+				panel.getHeight(), Image.SCALE_SMOOTH);
+
+		button.addActionListener(new ActionListener() {
+			int clicked = 0;
+
+			public void actionPerformed(ActionEvent arg0) {
+				clicked++;
+				System.out.println("\n----------- The value of clicked counter is : " + clicked);
+				switch (clicked) {
+				case 1: {
+					System.out.println("Hints button clicked once");
+					imageLabel.setIcon(new ImageIcon(image1));
+					break;
+				}
+				case 2: {
+					System.out.println("Hints button clicked twice");
+					imageLabel.setIcon(new ImageIcon(image2));
+					break;
+				}
+				default:
+					System.out.println("Default one");
+					break;
+				}
+				// System.out.println("hints btn clicked!!");
+				//
+				// imageLabel.setIcon(new ImageIcon(image1));
+
+			}
+		});
+		button.setBounds(466, 320, 70, 22);
+		contentPane.add(button);
+
 
 	}
 }
