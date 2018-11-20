@@ -42,10 +42,14 @@ public class QuestionsPage extends JFrame {
 	Image image2;
 	JLabel lblQuestions;
 
-	// public String getQuestion() {
-	// question = this.quizQuestions.get(count).getQuestion();
-	// return question;
-	// }
+
+	
+	public void setQuizObject(ArrayList<Model> arrayList) {
+		quizQuestions = arrayList;
+		question = quizQuestions.get(count).getQuestion();
+		System.out.println("question is \n" + this.quizQuestions.get(0).getQuestion());
+
+	}
 
 	public void setImage() throws IOException {
 		if (imageCounter >= 0 && imageCounter < 4) {
@@ -58,9 +62,19 @@ public class QuestionsPage extends JFrame {
 			imageLabel.setIcon(new ImageIcon(image2));
 		}
 	}
+	public void setCount() {
+		if (count < 4) {
+			count++;
+		}
+	}
+	public int getCount() {
+		return count;
+	}
 
-	public void displayImage() throws IOException {
 
+	public void setScreen() throws IOException {
+		String question = this.quizQuestions.get(count).getQuestion();
+		lblQuestions.setText("<html>" + "Question:" + question + "</html>");
 		setImage();
 	}
 
@@ -102,7 +116,7 @@ public class QuestionsPage extends JFrame {
 		lblQuestions.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblQuestions.setBounds(96, 362, 496, 73);
 		lblQuestions.setText("<html>" + "Question: "
-				+ " Question goes here Question goes here Question goes here Question goes here " + "</html>");
+				+ "" + "</html>");
 		contentPane.add(lblQuestions);
 
 		// radio btn group
@@ -141,6 +155,16 @@ public class QuestionsPage extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				System.out.println("next btn clicked!!");
+				setCount();
+				try {
+					setScreen();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+//				String question = quizQuestions.get(count).getQuestion();
+//				lblQuestions.setText("<html>" + "Question:" + question + "</html>");
+//				
 			}
 		});
 		button_1.setBounds(522, 559, 70, 22);
@@ -164,6 +188,6 @@ public class QuestionsPage extends JFrame {
 		button.setBounds(466, 320, 70, 22);
 		contentPane.add(button);
 
-		displayImage();
+		setScreen();
 	}
 }
