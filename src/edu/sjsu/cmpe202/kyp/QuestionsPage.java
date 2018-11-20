@@ -75,7 +75,27 @@ public class QuestionsPage extends JFrame {
 	public void setScreen() throws IOException {
 		String question = this.quizQuestions.get(count).getQuestion();
 		lblQuestions.setText("<html>" + "Question:" + question + "</html>");
+		btngrp.clearSelection();
+		rdbtnOption.setText(this.quizQuestions.get(count).getOptions()[0]);
+		rdbtnOption_1.setText(this.quizQuestions.get(count).getOptions()[1]);
+		rdbtnOption_2.setText(this.quizQuestions.get(count).getOptions()[2]);
+		rdbtnOption_3.setText(this.quizQuestions.get(count).getOptions()[3]);
+
 		setImage();
+	}
+	public String getRadioValue() {
+		if (rdbtnOption.isSelected()) {
+			return rdbtnOption.getText();
+		} else if (rdbtnOption_1.isSelected()) {
+			return rdbtnOption_1.getText();
+		} else if (rdbtnOption_2.isSelected()) {
+			return rdbtnOption_2.getText();
+		} else if (rdbtnOption_3.isSelected()) {
+			return rdbtnOption_3.getText();
+		} else {
+			return "";
+		}
+
 	}
 
 	/**
@@ -122,23 +142,23 @@ public class QuestionsPage extends JFrame {
 		// radio btn group
 		btngrp = new ButtonGroup();
 
-		rdbtnOption = new JRadioButton("option 1");
+		rdbtnOption = new JRadioButton("");
 		rdbtnOption.setBounds(150, 457, 260, 23);
 		rdbtnOption.setActionCommand("option 1");
 		contentPane.add(rdbtnOption);
 
-		rdbtnOption_1 = new JRadioButton("option 2");
+		rdbtnOption_1 = new JRadioButton("");
 		rdbtnOption_1.setBounds(150, 483, 260, 23);
 		rdbtnOption_1.setActionCommand("option 2");
 		contentPane.add(rdbtnOption_1);
 
-		rdbtnOption_2 = new JRadioButton("option3");
+		rdbtnOption_2 = new JRadioButton("");
 		rdbtnOption_2.setBounds(150, 509, 260, 23);
 		rdbtnOption_2.setActionCommand("option 3");
 
 		contentPane.add(rdbtnOption_2);
 
-		rdbtnOption_3 = new JRadioButton("option4");
+		rdbtnOption_3 = new JRadioButton("");
 		rdbtnOption_3.setBounds(150, 535, 260, 23);
 		rdbtnOption_3.setActionCommand("option 4");
 
@@ -153,18 +173,27 @@ public class QuestionsPage extends JFrame {
 		Button button_1 = new Button("Next");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				System.out.println("next btn clicked!!");
-				setCount();
-				try {
-					setScreen();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				String radioValue = getRadioValue();
+				if (!radioValue.equals("")) {
+					quizQuestions.get(getCount()).setChoosenAnswer(radioValue);
+					setCount();
+					imageCounter = -1;
+					if(getCount()<2){
+						
+						try {
+							setScreen();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}else{
+						dispose();
+						FinalPage fp = new FinalPage(quizQuestions);
+						fp.setVisible(true);
+					}
+					
 				}
-//				String question = quizQuestions.get(count).getQuestion();
-//				lblQuestions.setText("<html>" + "Question:" + question + "</html>");
-//				
+
 			}
 		});
 		button_1.setBounds(522, 559, 70, 22);
