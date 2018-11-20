@@ -33,12 +33,14 @@ public class QuestionsPage extends JFrame {
 	public ArrayList<Model> quizQuestions = new ArrayList<>();
 	public int count, imageCounter;
 	String question;
-	
+	JRadioButton rdbtnOption;
+	JRadioButton rdbtnOption_1;
+	JRadioButton rdbtnOption_2;
+	JRadioButton rdbtnOption_3;
 	JLabel imageLabel;
 	JPanel panel;
 	Image image2;
-
-	
+	JLabel lblQuestions;
 
 	// public String getQuestion() {
 	// question = this.quizQuestions.get(count).getQuestion();
@@ -58,12 +60,9 @@ public class QuestionsPage extends JFrame {
 	}
 
 	public void displayImage() throws IOException {
-		
 
 		setImage();
 	}
-
-	
 
 	/**
 	 * Create the frame.
@@ -93,36 +92,61 @@ public class QuestionsPage extends JFrame {
 		panel.setBounds(150, 67, 383, 235);
 		Image image = ImageIO.read(new File("src/resources/Starter_img.jpg")).getScaledInstance(panel.getWidth(),
 				panel.getHeight(), Image.SCALE_SMOOTH);
-		// ImageIcon imageIcon = new ImageIcon(image);
+
 		imageLabel = new JLabel(new ImageIcon(image));
 		panel.add(imageLabel);
 		contentPane.add(panel);
 
-		
+		// question
+		lblQuestions = new JLabel();
+		lblQuestions.setFont(new Font("Calibri", Font.BOLD, 15));
+		lblQuestions.setBounds(96, 362, 496, 73);
+		lblQuestions.setText("<html>" + "Question: "
+				+ " Question goes here Question goes here Question goes here Question goes here " + "</html>");
+		contentPane.add(lblQuestions);
 
-		//
-		// JLabel label = new JLabel();
-		// label.setIcon(new ImageIcon("myImage.PNG"));;
-		// panel.add(label);
+		// radio btn group
+		btngrp = new ButtonGroup();
 
-		// lblQuestions = new JLabel(this.question);
-		// lblQuestions.setFont(new Font("Calibri", Font.BOLD, 17));
-		// lblQuestions.setBounds(96, 362, 496, 73);
-		// contentPane.add(lblQuestions);
+		rdbtnOption = new JRadioButton("option 1");
+		rdbtnOption.setBounds(150, 457, 260, 23);
+		rdbtnOption.setActionCommand("option 1");
+		contentPane.add(rdbtnOption);
 
+		rdbtnOption_1 = new JRadioButton("option 2");
+		rdbtnOption_1.setBounds(150, 483, 260, 23);
+		rdbtnOption_1.setActionCommand("option 2");
+		contentPane.add(rdbtnOption_1);
 
+		rdbtnOption_2 = new JRadioButton("option3");
+		rdbtnOption_2.setBounds(150, 509, 260, 23);
+		rdbtnOption_2.setActionCommand("option 3");
 
+		contentPane.add(rdbtnOption_2);
 
+		rdbtnOption_3 = new JRadioButton("option4");
+		rdbtnOption_3.setBounds(150, 535, 260, 23);
+		rdbtnOption_3.setActionCommand("option 4");
 
+		contentPane.add(rdbtnOption_3);
 
+		btngrp.add(rdbtnOption);
+		btngrp.add(rdbtnOption_1);
+		btngrp.add(rdbtnOption_2);
+		btngrp.add(rdbtnOption_3);
+
+		// next button
+		Button button_1 = new Button("Next");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				System.out.println("next btn clicked!!");
+			}
+		});
+		button_1.setBounds(522, 559, 70, 22);
+		contentPane.add(button_1);
 
 		Button button = new Button("Hints");
-		// Image image1 = ImageIO.read(new
-		// File("src/resources/Adapter_1.jpg")).getScaledInstance(panel.getWidth(),
-		// panel.getHeight(), Image.SCALE_SMOOTH);
-		// image2 = ImageIO.read(new
-		// File("src/resources/Adapter_2.jpg")).getScaledInstance(panel.getWidth(),
-		// panel.getHeight(), Image.SCALE_SMOOTH);
 
 		button.addActionListener(new ActionListener() {
 
@@ -139,8 +163,6 @@ public class QuestionsPage extends JFrame {
 		});
 		button.setBounds(466, 320, 70, 22);
 		contentPane.add(button);
-
-		
 
 		displayImage();
 	}
