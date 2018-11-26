@@ -33,8 +33,12 @@ Tapan
 
 **What I did**
 
+-> Implemented HomePage and FinalPage
+-> Participated in brainstorming sessions
+
 **What I plan to do next**
+-> Refactor code to implement patterns
 
 **What blockers I have**
-
+-> None
 ___
