@@ -34,6 +34,10 @@ Kavina
 
 -> None
 
+**XP Value - Communication**
+
+-> Communication is very important for the success of any project. All the team members communicated frequently through calls or at least one meeting per week. I actively participated and gave my inputs for the project ideas in the first meeting.
+
 ____
 
 ### Scrum meeting : 2
@@ -67,6 +71,11 @@ Kavina
 **What blockers I have**
 
 -> None
+
+**XP Value - Communication**
+
+-> This value also helps in knowing about other team member’s perspectives and so all the members can openly discuss about ideas. I always remained open for ideas and gave my inputs.
+
 ____
 
 ### Scrum meeting : 3
@@ -92,6 +101,9 @@ Kavina
 
 -> Waiting for other team member’s implementation of score calculation
 
+**XP Values - Communication**
+
+-> Our team made sure we had very clear understanding about the goals and the requirements. We divided the work amongst ourselves evenly. I also did not hesitate to reach out to other teammates for help. Also, I tried to help other team members whenever I could.
 ___
 
 ### Scrum meeting : 4
@@ -115,6 +127,12 @@ Kavina
 
 
 **What blockers I have**
+
+-> None
+
+**XP Values - Communication**
+
+-> Lastly, we all sat together for the final scrum meeting and made the YouTube video. We also sometimes had code reviews and understood each other’s work. I made sure that each team member communicated properly to explain their respective works and also everyone felt comfortable to ask questions
 
 ___
 
