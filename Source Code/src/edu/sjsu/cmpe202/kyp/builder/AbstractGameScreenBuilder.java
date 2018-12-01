@@ -21,6 +21,9 @@ public abstract class AbstractGameScreenBuilder {
 	
 	protected void buildHeader(){
 		JLabel lblKnowYourPatterns = new JLabel("Know Your Patterns");
+		lblKnowYourPatterns.setForeground(SystemColor.activeCaption);
+		lblKnowYourPatterns.setFont(new Font("Calibri", Font.BOLD, 60));
+		lblKnowYourPatterns.setHorizontalAlignment(SwingConstants.CENTER);
 		lblKnowYourPatterns.setBounds(10, 33, 894, 48);
 		contentPane.add(lblKnowYourPatterns);
 	}
