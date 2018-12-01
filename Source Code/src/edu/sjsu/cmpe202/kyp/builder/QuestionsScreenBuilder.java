@@ -66,29 +66,20 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 	Scores score;
 	QuestionsScreenBuilder sb;
 
-	Originator originator;
-	Caretaker caretaker;
 
-	public QuestionsScreenBuilder(DifficultyLevel difficultyType, Scores sc, Caretaker ct, Originator og) {
-		originator = og;
+	public QuestionsScreenBuilder(DifficultyLevel difficultyType, Scores sc) {
+		
 		score = sc;
-		caretaker = ct;
 		imageCounter = -1;
 
 		currentStrategy = gameStrategyFactory.getStrategy(difficultyType);
-		originator.setState(currentStrategy.getQuestios(), difficultyType.toString(), 0);
-
-		if (originator.restoreState(caretaker.getMemento()) != null
-				&& originator.restoreState(caretaker.getMemento()).size() > 0) {
-			this.model = originator.restoreState(caretaker.getMemento());
-			count = originator.restoreCount(caretaker.getMemento());
-		} else {
+		
+		
 			this.model = currentStrategy.getQuestios();
 			count = 0;
-		}
+		
 
-		currentStrategy.registerObserver(score);
-		score.registerObserver(this);
+		
 
 		noImage = new NoImage(this);
 		oneImage = new OneImage(this);
@@ -241,8 +232,6 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 					model.get(getCount()).setChoosenAnswer(radioValue);
 					currentStrategy.calculateScore(isCorrectAnswer(), currentState.getImageOpenedCount());
 					setCount();
-					originator.setState(model, ((AbstractGameStrategy) currentStrategy).getDifficultyLevel().toString(),
-							count);
 					imageCounter = -1;
 					if (getCount() < 5) {
 
@@ -254,7 +243,7 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 						}
 					} else {
 						screen.dispose();
-						JFrame fp = new FinalScreenBuilder(model, (Scores) score, caretaker, originator,
+						JFrame fp = new FinalScreenBuilder(model, (Scores) score,
 								((AbstractGameStrategy) currentStrategy).getDifficultyLevel().toString()).buildScreen();
 						fp.setVisible(true);
 					}
@@ -279,7 +268,6 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				caretaker.addMemento(originator.save());
 				screen.dispose();
 				JFrame frame = new HomeScreenBuilder(score, caretaker, originator).buildScreen();
 				frame.setVisible(true);
