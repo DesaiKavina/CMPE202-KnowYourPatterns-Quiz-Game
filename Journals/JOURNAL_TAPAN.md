@@ -23,6 +23,10 @@ Tapan
 **What blockers I have**
 
 -> None
+
+**XP Value**
+I believe in XP value - 'Respect'. This value helps to build trust amongst team members.
+I followed this value by listening carefully to other team members during concept discussion.
 ____
 
 ### Scrum meeting : 2
@@ -41,6 +45,9 @@ Tapan
 
 **What blockers I have**
 -> None
+
+**XP Value**
+I used 'Respect' XP value by understanding opinoins during brainstroming sessions.
 ___
 
 ### Scrum meeting : 3
@@ -60,6 +67,9 @@ Tapan
 
 **What blockers I have**
 -> None
+
+**XP Value**
+I used 'Respect' XP value by employing code review suggessions by other team members.
 ___
 
 ### Scrum meeting : 4
@@ -78,4 +88,7 @@ Tapan
 
 **What blockers I have**
 -> None
+
+**XP Value**
+During UML diagrams discussion, team members debated over different approaches. I used 'Respect' value to understand different perspectives and contribute mine when offered a chance for it.
 ___
