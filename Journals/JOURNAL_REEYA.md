@@ -28,6 +28,9 @@ Reeya
 **What blockers I have**
 
 -> None
+
+**XP-Value: Feedback**
+-> We tried to ensure feedback at all the levels of the project work. In the first meeting, I suggested that we take small modules and develop their end to end flow first and then take feedback after each scrum meeting.
 ____
 
 ### Scrum meeting : 2
@@ -47,6 +50,8 @@ Reeya
 **What blockers I have**
 -> None
 
+**XP-Value: Feedback**
+-> After every scrum meeting, we would take feedback from each other about the work presented in that scrum meeting. Thus, after taking feedback if required, all the team members were open for change and adapted to the changes very smoothly. I positively listened to my teammates' feedback on my work and tried to implement it as best as I could.
 ___
 
 ### Scrum meeting : 3
@@ -64,6 +69,9 @@ Reeya
 
 **What blockers I have**
 -> None
+
+**XP-Value: Feedback**
+-> We openly discussed about the ideas of the design patterns that can be included in the project. Each team member came up with some idea and the other members gave their honest feedback. So after a comprehensive discussion, we all decided the list of design patterns that could best suit our scenario. I always gave my humble and honest feedback.
 
 ___
 
@@ -83,4 +91,6 @@ Reeya
 **What blockers I have**
 -> None
 
+**XP-Value: Feedback**
+-> We also conducted few code reviews where each team member presented their respective codes. I was actively contributed to test my other teammates' code and give them feedback whenever required.
 ___
