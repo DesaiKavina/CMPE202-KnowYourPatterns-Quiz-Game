@@ -66,18 +66,26 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 	Scores score;
 	QuestionsScreenBuilder sb;
 
+	Originator originator;
+	Caretaker caretaker;
 
-	public QuestionsScreenBuilder(DifficultyLevel difficultyType, Scores sc) {
-		
+	public QuestionsScreenBuilder(DifficultyLevel difficultyType, Scores sc, Caretaker ct, Originator og) {
+		originator = og;
 		score = sc;
+		caretaker = ct;
 		imageCounter = -1;
 
 		currentStrategy = gameStrategyFactory.getStrategy(difficultyType);
+		originator.setState(currentStrategy.getQuestios(), difficultyType.toString(), 0);
 
-		
+		if (originator.restoreState(caretaker.getMemento()) != null
+				&& originator.restoreState(caretaker.getMemento()).size() > 0) {
+			this.model = originator.restoreState(caretaker.getMemento());
+			count = originator.restoreCount(caretaker.getMemento());
+		} else {
 			this.model = currentStrategy.getQuestios();
 			count = 0;
-		
+		}
 
 		currentStrategy.registerObserver(score);
 		score.registerObserver(this);
@@ -182,7 +190,43 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 		button.setBounds(750, 401, 89, 35);
 		contentPane.add(button);
 
-
+//		JButton button_1 = new JButton("Next");
+//		button_1.setForeground(SystemColor.windowBorder);
+//		button_1.setFont(new Font("Calibri", Font.PLAIN, 21));
+//		button_1.setBackground(SystemColor.activeCaption);
+//		button_1.setBounds(743, 615, 96, 35);
+//		button_1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				String radioValue = getRadioValue();
+//				if (!radioValue.equals("")) {
+//					model.get(getCount()).setChoosenAnswer(radioValue);
+//					currentStrategy.calculateScore(isCorrectAnswer(), currentState.getImageOpenedCount());
+//					setCount();
+//					originator.setState(model, ((AbstractGameStrategy) currentStrategy).getDifficultyLevel().toString(),
+//							count);
+//					imageCounter = -1;
+//					if (getCount() < 5) {
+//
+//						try {
+//							setScreen();
+//						} catch (IOException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//					} else {
+//						screen.dispose();
+//						JFrame fp = new FinalScreenBuilder(model, (Scores) score, caretaker, originator,
+//								((AbstractGameStrategy) currentStrategy).getDifficultyLevel().toString()).buildScreen();
+//						fp.setVisible(true);
+//					}
+//
+//				}
+//
+//			}
+//
+//		});
+//		button_1.setBounds(522, 559, 70, 22);
+//		contentPane.add(button_1);
 
 		JButton btnNewButton_1 = new JButton("Next");
 		btnNewButton_1.setForeground(SystemColor.windowBorder);
@@ -197,7 +241,8 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 					model.get(getCount()).setChoosenAnswer(radioValue);
 					currentStrategy.calculateScore(isCorrectAnswer(), currentState.getImageOpenedCount());
 					setCount();
-					
+					originator.setState(model, ((AbstractGameStrategy) currentStrategy).getDifficultyLevel().toString(),
+							count);
 					imageCounter = -1;
 					if (getCount() < 5) {
 
@@ -209,7 +254,7 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 						}
 					} else {
 						screen.dispose();
-						JFrame fp = new FinalScreenBuilder(model, (Scores) score,
+						JFrame fp = new FinalScreenBuilder(model, (Scores) score, caretaker, originator,
 								((AbstractGameStrategy) currentStrategy).getDifficultyLevel().toString()).buildScreen();
 						fp.setVisible(true);
 					}
@@ -234,8 +279,9 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				caretaker.addMemento(originator.save());
 				screen.dispose();
-				JFrame frame = new HomeScreenBuilder(score).buildScreen();
+				JFrame frame = new HomeScreenBuilder(score, caretaker, originator).buildScreen();
 				frame.setVisible(true);
 			}
 		});
