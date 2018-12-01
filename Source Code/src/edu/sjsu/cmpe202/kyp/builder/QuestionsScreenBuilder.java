@@ -57,7 +57,12 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 	private GameStrategy currentStrategy;
 	private GameStrategyFactory gameStrategyFactory = new GameStrategyFactory();
 
-	
+	private IImageState currentState;
+	private NoImage noImage;
+	private OneImage oneImage;
+	private TwoImage twoImage;
+	private ThreeImage threeImage;
+	private FourImage fourImage;
 	Scores score;
 	QuestionsScreenBuilder sb;
 
@@ -68,13 +73,14 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 		imageCounter = -1;
 
 		currentStrategy = gameStrategyFactory.getStrategy(difficultyType);
-		
+
 		
 			this.model = currentStrategy.getQuestios();
 			count = 0;
 		
 
-		
+		currentStrategy.registerObserver(score);
+		score.registerObserver(this);
 
 		noImage = new NoImage(this);
 		oneImage = new OneImage(this);
@@ -162,49 +168,21 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 		button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				
+				currentState.clickedHint();
+				imageCounter++;
+				try {
+					setImage();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 		});
 		button.setBounds(750, 401, 89, 35);
 		contentPane.add(button);
 
-//		JButton button_1 = new JButton("Next");
-//		button_1.setForeground(SystemColor.windowBorder);
-//		button_1.setFont(new Font("Calibri", Font.PLAIN, 21));
-//		button_1.setBackground(SystemColor.activeCaption);
-//		button_1.setBounds(743, 615, 96, 35);
-//		button_1.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				String radioValue = getRadioValue();
-//				if (!radioValue.equals("")) {
-//					model.get(getCount()).setChoosenAnswer(radioValue);
-//					currentStrategy.calculateScore(isCorrectAnswer(), currentState.getImageOpenedCount());
-//					setCount();
-//					originator.setState(model, ((AbstractGameStrategy) currentStrategy).getDifficultyLevel().toString(),
-//							count);
-//					imageCounter = -1;
-//					if (getCount() < 5) {
-//
-//						try {
-//							setScreen();
-//						} catch (IOException e) {
-//							// TODO Auto-generated catch block
-//							e.printStackTrace();
-//						}
-//					} else {
-//						screen.dispose();
-//						JFrame fp = new FinalScreenBuilder(model, (Scores) score, caretaker, originator,
-//								((AbstractGameStrategy) currentStrategy).getDifficultyLevel().toString()).buildScreen();
-//						fp.setVisible(true);
-//					}
-//
-//				}
-//
-//			}
-//
-//		});
-//		button_1.setBounds(522, 559, 70, 22);
-//		contentPane.add(button_1);
+
 
 		JButton btnNewButton_1 = new JButton("Next");
 		btnNewButton_1.setForeground(SystemColor.windowBorder);
@@ -219,6 +197,7 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 					model.get(getCount()).setChoosenAnswer(radioValue);
 					currentStrategy.calculateScore(isCorrectAnswer(), currentState.getImageOpenedCount());
 					setCount();
+					
 					imageCounter = -1;
 					if (getCount() < 5) {
 
@@ -256,7 +235,7 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				screen.dispose();
-				JFrame frame = new HomeScreenBuilder(score, caretaker, originator).buildScreen();
+				JFrame frame = new HomeScreenBuilder(score).buildScreen();
 				frame.setVisible(true);
 			}
 		});
@@ -327,5 +306,45 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 
 	}
 
+	@Override
+	protected void buildScore() {
+
+	}
+
+	@Override
+	public void updatedScore(int score1) {
+		lblScore.setText("Score: " + ((Scores) score).getCurrentScore());
+
+	}
+
+	@Override
+	public void setStateNoImage() {
+		currentState = noImage;
+
+	}
+
+	@Override
+	public void setStateOneImage() {
+		currentState = oneImage;
+
+	}
+
+	@Override
+	public void setStateTwoImage() {
+		currentState = twoImage;
+
+	}
+
+	@Override
+	public void setStateThreeImage() {
+		currentState = threeImage;
+
+	}
+
+	@Override
+	public void setStateFourImage() {
+		currentState = fourImage;
+
+	}
 
 }
