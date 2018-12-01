@@ -57,35 +57,24 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 	private GameStrategy currentStrategy;
 	private GameStrategyFactory gameStrategyFactory = new GameStrategyFactory();
 
-	private IImageState currentState;
-	private NoImage noImage;
-	private OneImage oneImage;
-	private TwoImage twoImage;
-	private ThreeImage threeImage;
-	private FourImage fourImage;
+	
 	Scores score;
 	QuestionsScreenBuilder sb;
 
-	Originator originator;
-	Caretaker caretaker;
 
-	public QuestionsScreenBuilder(DifficultyLevel difficultyType, Scores sc, Caretaker ct, Originator og) {
-		originator = og;
+	public QuestionsScreenBuilder(DifficultyLevel difficultyType, Scores sc) {
+		
 		score = sc;
-		caretaker = ct;
+		
 		imageCounter = -1;
 
 		currentStrategy = gameStrategyFactory.getStrategy(difficultyType);
 		originator.setState(currentStrategy.getQuestios(), difficultyType.toString(), 0);
 
-		if (originator.restoreState(caretaker.getMemento()) != null
-				&& originator.restoreState(caretaker.getMemento()).size() > 0) {
-			this.model = originator.restoreState(caretaker.getMemento());
-			count = originator.restoreCount(caretaker.getMemento());
-		} else {
+		
 			this.model = currentStrategy.getQuestios();
 			count = 0;
-		}
+		
 
 		currentStrategy.registerObserver(score);
 		score.registerObserver(this);
@@ -176,15 +165,7 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 		button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				currentState.clickedHint();
-				imageCounter++;
-				try {
-					setImage();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
+				
 			}
 		});
 		button.setBounds(750, 401, 89, 35);
@@ -241,8 +222,7 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 					model.get(getCount()).setChoosenAnswer(radioValue);
 					currentStrategy.calculateScore(isCorrectAnswer(), currentState.getImageOpenedCount());
 					setCount();
-					originator.setState(model, ((AbstractGameStrategy) currentStrategy).getDifficultyLevel().toString(),
-							count);
+					
 					imageCounter = -1;
 					if (getCount() < 5) {
 
@@ -279,7 +259,7 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				caretaker.addMemento(originator.save());
+				
 				screen.dispose();
 				JFrame frame = new HomeScreenBuilder(score, caretaker, originator).buildScreen();
 				frame.setVisible(true);
@@ -352,45 +332,5 @@ public class QuestionsScreenBuilder extends AbstractGameScreenBuilder implements
 
 	}
 
-	@Override
-	protected void buildScore() {
-
-	}
-
-	@Override
-	public void updatedScore(int score1) {
-		lblScore.setText("Score: " + ((Scores) score).getCurrentScore());
-
-	}
-
-	@Override
-	public void setStateNoImage() {
-		currentState = noImage;
-
-	}
-
-	@Override
-	public void setStateOneImage() {
-		currentState = oneImage;
-
-	}
-
-	@Override
-	public void setStateTwoImage() {
-		currentState = twoImage;
-
-	}
-
-	@Override
-	public void setStateThreeImage() {
-		currentState = threeImage;
-
-	}
-
-	@Override
-	public void setStateFourImage() {
-		currentState = fourImage;
-
-	}
 
 }

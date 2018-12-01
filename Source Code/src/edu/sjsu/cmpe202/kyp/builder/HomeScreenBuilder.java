@@ -20,13 +20,11 @@ import edu.sjsu.cmpe202.kyp.strategy.DifficultyLevel;
 
 public class HomeScreenBuilder extends AbstractGameScreenBuilder {
 	Scores score;
-	Caretaker ct;
-	Originator og;
 
-	public HomeScreenBuilder(Scores sc, Caretaker c, Originator o) {
+
+	public HomeScreenBuilder(Scores sc, ) {
 		score = sc;
-		ct = c;
-		og = o;
+	
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package edu.sjsu.cmpe202.kyp.factory.impl;
+package edu.sjsu.cmpe202.kyp.strategy.impl;
 
 import java.util.List;
 
