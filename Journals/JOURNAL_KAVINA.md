@@ -15,15 +15,20 @@ Kavina
 
 -> Researching about game development platforms
 
--> Exploring greenfoot (still pending)
+-> Exploring greenfoot
 
--> Making the weekly scrum journal skeleton
+-> Brainstorming for game ideas
+
+-> Made the project journal skeleton
 
 **What I plan to do next**
 
--> Exploring greenfoot
+-> Exploring ways to do JSON parsing in JAVA
 
--> Research about other options like Java Swing and applet
+-> Make sample JSON file for inventory of questions and answers
+
+-> Brainstorming ideas for UI mockups and making UI mockups
+
 
 **What blockers I have**
 
@@ -39,17 +44,25 @@ Kavina
 
 **What I did**
 
--> Completed the exploration of greenfoot
+-> Completed the JSON parsing in JAVA, extracted the content and storing
+   in the arraylist
 
--> Completed researching about Java Swing and applet
+-> Tested the JSON parsing with the sample JSON file created for storing 
+   questions and answers
+
+-> Made the UI mockups for two pages of the game
 
 **What I plan to do next**
 
--> Find out questions of the quiz from GOF book and the internet
+-> Implementing state patters for storing the state for number of images 
+   unveiled by clicking the hint button
 
--> Make a sample JSON file for storing question, answer, image files
+-> Implementing the decorator pattern for decorating the answer choses 
+   with different colors based on the correctness of the answer given by
+   the player
 
--> parsing the JSON file and storing the data in an arraylist
+-> Cropping images for displaying it as hints for the questions
+
 
 **What blockers I have**
 
@@ -64,19 +77,20 @@ Kavina
 
 **What I did**
 
--> Researched about the questions for the quiz and made a sample JSON file for that 
+-> Implemented the state design pattern (still pending) 
 
--> Using JSON parser for parsing the JSON file of questions and answers
+-> Implemented the decorator design pattern
 
 **What I plan to do next**
 
--> Researching about design patterns appropriate for the project
+-> Complete the implementation of pending state design pattern
 
--> Inculcating design patterns in the project 
+-> Start making UML diagrams for the project (System sequence and use 
+   case specification)
 
 **What blockers I have**
 
--> None
+-> Waiting for other team member’s implementation of score calculation
 
 ___
 
@@ -88,13 +102,21 @@ Kavina
 
 **What I did**
 
+-> Completed the implementation of both the design patterns with proper 
+   testing
+
+-> Prepared the Use Case specification document and made the supporting 
+   System Sequence diagram
+
+-> Wrote the user story
+
 
 **What I plan to do next**
 
 
 **What blockers I have**
 
-
 ___
+
 
 
