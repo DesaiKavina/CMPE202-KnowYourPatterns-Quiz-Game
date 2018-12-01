@@ -80,7 +80,11 @@ public class FinalScreenBuilder extends AbstractGameScreenBuilder {
 		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				originator.setState(null, currentStrategy,0);
+				caretaker.addMemento( originator.save() );
+				screen.dispose();
+				JFrame frame = new HomeScreenBuilder((Scores) scores, caretaker, originator).buildScreen();
+				frame.setVisible(true);
 			}
 		});
 
