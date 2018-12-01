@@ -20,6 +20,29 @@ The points calculations is done in such a way that, if the user rightly answers 
 
 Lastly, after attempting all the questions, the user is redirected to the scores page which displays the points of that user. Also, we have displayed the correct answers of the questions below the score and the answers the user chose. This way user can review his/her performance in the quiz.  
 
+### UML Diagrams
+ 
+#### Class Diagram
+![alt text](https://github.com/nguyensjsu/fa18-202-team-flash/blob/master/UML_diagrams_images/Class_Diagram.png)
+
+#### Activity Diagram
+![alt text](https://github.com/nguyensjsu/fa18-202-team-flash/blob/master/UML_diagrams_images/Activity_Diagram.png)
+
+#### UseCase Diagram
+![alt text](https://github.com/nguyensjsu/fa18-202-team-flash/blob/master/UML_diagrams_images/UseCase_Diagram.png)
+
+#### System Sequence Diagrams
+![alt text](https://github.com/nguyensjsu/fa18-202-team-flash/blob/master/UML_diagrams_images/System_Sequence_1.png)
+
+![alt text](https://github.com/nguyensjsu/fa18-202-team-flash/blob/master/UML_diagrams_images/System_Sequence_2.png)
+
+![alt text](https://github.com/nguyensjsu/fa18-202-team-flash/blob/master/UML_diagrams_images/System_Sequence_3.png)
+
+![alt text](https://github.com/nguyensjsu/fa18-202-team-flash/blob/master/UML_diagrams_images/System_Sequence_4.png)
+
+
 ### Design notes
 ![alt text](https://github.com/nguyensjsu/fa18-202-team-flash/blob/master/designImages/brainstorming1.jpg)
 ![alt text](https://github.com/nguyensjsu/fa18-202-team-flash/blob/master/designImages/brainstorming2.jpg)
+
+
